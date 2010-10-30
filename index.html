@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="application.css" type="text/css" media="screen" title="Application CSS" charset="utf-8">
+		<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="socket.io/socket.io.js"> </script>				
+		<script type="text/javascript" charset="utf-8" src="json.js"></script>
+		<script type="text/javascript" charset="utf-8" src="application.js"></script>
+	</head>
+
+	<body>
+		<h3>Welcome to You who have come to:</h3>
+		<h1>iMarionette</h1>
+		<p>Enter your the phone number of your iPhone or iPod Touch and you'll be injected into cuddles the avatar bear for 5 minutes during the Hive-Mind Halloween party.</p>
+		<p>You can expect to receive a phone call at some point during the night, possibly more than once. It's up to cuddles how long he wants to keep you in his body.</p>
+		<p>Note: interesting though you are, we don't keep these numbers or record the video. This just for fun, yo.</p> 		
+		
+		<div id="errors"></div>
+		
+		<form id="queueForm">
+			<input type="text" name="name" size="10"/>
+			<input type="text" name="faceTimeID" size="10"/>
+			<input type="submit" value="Call me!" />
+		</form>
+		
+		<ol id="callQueue">			
+		</ol>
+		
+		<script type="text/javascript" charset="utf-8">
+			iMarionette.Client.initialize();
+		</script>
+	</body>
+</html>

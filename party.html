@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="application.css" type="text/css" media="screen" title="Application CSS" charset="utf-8">
+		<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="socket.io/socket.io.js"> </script>				
+		<script type="text/javascript" charset="utf-8" src="json.js"></script>
+		<script type="text/javascript" charset="utf-8" src="application.js"></script>
+	</head>
+
+	<body class="party">
+		<ol id="callQueue">
+		</ol>
+		
+		<script type="text/javascript" charset="utf-8">
+			iMarionette.Client.initialize({'partyMode': true});
+		</script>
+	</body>
+</html>

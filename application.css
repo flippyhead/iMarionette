@@ -1,0 +1,21 @@
+h3 {
+	padding: 0;
+	margin: 0;
+	color: gray;
+}
+
+h1 {
+	padding: 0;
+	margin: 0;
+	font-size: 500%;
+}
+
+form#queueForm input {
+	font-size: 200%;
+}
+
+#errors {
+	color: maroon;
+	font-size: 150%;
+	display: none;
+}
