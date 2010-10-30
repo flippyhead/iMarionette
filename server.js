@@ -53,13 +53,21 @@ iMarionette.Redis = {
 		this.addHash(hashKey, params);
 	},
 	
+	markReceiverCalled: function(faceTimeID) {
+		var hashKey = this.key('receiver', faceTimeID);
+		this.addHash(hashKey, {'calledAt': new Date().getTime()});
+	},
+	
 	getReceiver: function(id, processData) {
 		var hashKey = this.key('receiver', id);			
 		this.client.hgetall(hashKey, processData);
 	},
 	
 	unbuffer: function(params) {
-		return {'name': params.name+'', 'faceTimeID': params.faceTimeID+''};
+		return {
+			'name': params.name+'', 
+			'faceTimeID': params.faceTimeID+'', 
+			'calledAt': params.calledAt ? (params.calledAt+'') : false};
 	},
 	
 	key: function(part1, part2) {
@@ -96,7 +104,7 @@ var server = http.createServer(function (request, response) {
 		
 		var filename = path.join(process.cwd(), uri);
 		
-		path.exists(filename, function(exists) {  		
+		path.exists(filename, function(exists) {
 			if(!exists) {  
 				response.writeHead(404, {"Content-Type": "text/plain"});  
 				response.write("404 Not Found\n");  
@@ -125,8 +133,10 @@ server.listen(80);
 
 var socket = io.listen(server); 
 
-socket.on('connection', function(client) {	
-	client.broadcast({announcement: client.sessionId + ' connected'});
+socket.on('connection', function(client) {		
+	client.on('message', function(faceTimeID) {
+		iMarionette.Redis.markReceiverCalled(faceTimeID);
+	});
 	
 	iMarionette.Redis.getCallQueue(function(err, faceTimeIDs) {
    	faceTimeIDs.forEach(function(faceTimeID, i) {

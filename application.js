@@ -25,7 +25,9 @@ iMarionette.Client = {
 	},
 
 	appendToQueue: function(params) {
-		var row = '<li><span class="name">'+params.name+'</span>';
+		var className = params.calledAt ? 'called' : '';
+		
+		var row = '<li class="'+className+'"><span class="name">'+params.name+'</span> ';
 		
 		if (this.options.partyMode) {
 			row += '<a class="faceTimeID" href="facetime://'+params.faceTimeID+'">'+params.faceTimeID+'</a>';
@@ -42,7 +44,11 @@ iMarionette.Client = {
 		$(document).ready(function() {
 			_this.socket.on('message', function(params) {
 				_this.appendToQueue(params);
-			});			
+			});
+			
+			$('a.faceTimeID').live('click', function(e) {
+				_this.socket.send($(this).text());
+			});
 			
 			$('form#queueForm').submit(function(e){
 				e.preventDefault();

@@ -19,3 +19,12 @@ form#queueForm input {
 	font-size: 150%;
 	display: none;
 }
+
+li.called, li.called a {
+	text-decoration: line-through;
+	color: gray;
+}
+
+ol#callQueue li {
+	font-size: 200%;
+}
