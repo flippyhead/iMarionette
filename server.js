@@ -51,11 +51,17 @@ iMarionette.Redis = {
 	addReceiver: function(params) {
 		var hashKey = this.key('receiver', params.faceTimeID);
 		this.addHash(hashKey, params);
+		this.markReceiverNotCalled(params.faceTimeID);
 	},
 	
 	markReceiverCalled: function(faceTimeID) {
 		var hashKey = this.key('receiver', faceTimeID);
 		this.addHash(hashKey, {'calledAt': new Date().getTime()});
+	},
+	
+	markReceiverNotCalled: function(faceTimeID) {
+		var hashKey = this.key('receiver', faceTimeID);
+		this.addHash(hashKey, {'calledAt': 0});		
 	},
 	
 	getReceiver: function(id, processData) {

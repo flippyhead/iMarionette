@@ -25,7 +25,7 @@ iMarionette.Client = {
 	},
 
 	appendToQueue: function(params) {
-		var className = params.calledAt ? 'called' : '';
+		var className = (params.calledAt != 0) ? 'called' : '';
 		
 		var row = '<li class="'+className+'"><span class="name">'+params.name+'</span> ';
 		
@@ -46,6 +46,10 @@ iMarionette.Client = {
 				_this.appendToQueue(params);
 			});
 			
+			$('#queueForm input[type=text]').focus(function(e){
+				$(this).val('');
+			})
+			
 			$('a.faceTimeID').live('click', function(e) {
 				_this.socket.send($(this).text());
 			});
@@ -53,7 +57,7 @@ iMarionette.Client = {
 			$('form#queueForm').submit(function(e){
 				e.preventDefault();
 				
-				var faceTimeIDRegex = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+				var faceTimeIDRegex = /^.+$/ // /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
 				var nameRegex = /^.+$/;
 				var name = $('input[name=name]').val();
 				var faceTimeID = $('input[name=faceTimeID]').val();
@@ -71,7 +75,7 @@ iMarionette.Client = {
 						}
 						
 						if (!faceTimeIDRegex.test(faceTimeID)) {
-							_this.setError('You entered a bad phone number, make it 10 digits');
+							_this.setError('Enter a valid 10 digit phone number or your FaceTime.app email address');
 							return false
 						}
 					},
