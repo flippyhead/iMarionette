@@ -11,12 +11,12 @@ h1 {
 }
 
 form#queueForm input {
-	font-size: 200%;
+	font-size: 120%;
 }
 
 #errors {
 	color: maroon;
-	font-size: 150%;
+	font-size: 110%;
 	display: none;
 }
 
@@ -25,6 +25,14 @@ li.called, li.called a {
 	color: gray;
 }
 
+ol#callQueue {margin-left: 0; padding-left: 17em;}
+
 ol#callQueue li {
 	font-size: 200%;
+}
+
+#left {
+	float: left;
+	padding-right: 10px;
+	height: 1000px;
 }

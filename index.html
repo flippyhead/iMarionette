@@ -1,32 +1,46 @@
-<html>
-	<head>
-		<link rel="stylesheet" href="application.css" type="text/css" media="screen" title="Application CSS" charset="utf-8">
-		<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-		<script type="text/javascript" charset="utf-8" src="socket.io/socket.io.js"> </script>				
-		<script type="text/javascript" charset="utf-8" src="json.js"></script>
-		<script type="text/javascript" charset="utf-8" src="application.js"></script>
-	</head>
+<head>
+	<title>iMarionette: Facetime for Partytime</title>
+	<link rel="stylesheet" href="http://www.hive-mind.com/halloween/2010/imarionette/style.css" type="text/css" media="screen" />
+	<link rel="stylesheet" href="application.css" type="text/css" media="screen" title="Application CSS" charset="utf-8">
+	<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="socket.io/socket.io.js"> </script>				
+	<script type="text/javascript" charset="utf-8" src="json.js"></script>
+	<script type="text/javascript" charset="utf-8" src="application.js"></script>	
+</head>
+<body>
+	<div id = "wrapper">
+		<div id = "title"><img src = "http://www.hive-mind.com/halloween/2010/imarionette/imarionette-title.png" /></div>
+		<div style = "clear: both"></div>
+		<div id = "left"><img src = "http://www.hive-mind.com/halloween/2010/imarionette/party-left.png" /></div>
+		<div id = "middle"><img src = "http://www.hive-mind.com/halloween/2010/imarionette/party-right.png" style = "float: right; padding-left: 10px;" />
+			<p>Can't make it to the party? Send your avatar!</p>
 
-	<body>
-		<h3>Welcome to You who have come to:</h3>
-		<h1>iMarionette</h1>
-		<p>Enter your the phone number of your iPhone or iPod Touch and you'll be injected into cuddles the avatar bear for 5 minutes during the Hive-Mind Halloween party.</p>
-		<p>You can expect to receive a phone call at some point during the night, possibly more than once. It's up to cuddles how long he wants to keep you in his body.</p>
-		<p>Note: interesting though you are, we don't keep these numbers or record the video. This just for fun, yo.</p> 		
-		
-		<div id="errors"></div>
-		
-		<form id="queueForm">
-			<input type="text" name="name" size="20" value="your name"/>
-			<input type="text" name="faceTimeID" size="20" value="your facetime ID"/>
-			<input type="submit" value="Call me!" />
-		</form>
-		
-		<ol id="callQueue">			
-		</ol>
-		
-		<script type="text/javascript" charset="utf-8">
-			iMarionette.Client.initialize();
-		</script>
-	</body>
-</html>
+			<p>Enter your name and phone number below to spend five minutes Facetiming in to the <a href = "http://www.hive-mind.com/halloween/2010/">Hive Mind Halloween party</a>, live 
+				Saturday, October 30th from 9 pm - 4 am (or until the avatars run out of juice) in Seattle. One of our avatars will guide your face around.</p>
+				<p>iPhone 4 with Facetime or Facetime for the Mac <i>required</i>. Please don't enter your number below if you don't have these ready to go, or you'll waste 
+					valuable iMarionette time!</p>
+				
+					<div id="errors"></div>
+
+					<form id="queueForm">
+						<input type="text" name="name" size="20" value="your name"/>
+						<input type="text" name="faceTimeID" size="20" value="your facetime ID"/>
+						<input type="submit" value="Call me!" />
+					</form>
+
+					<ol id="callQueue">			
+					</ol>
+
+				
+				
+		<div id = "credits">
+			<p>iMarionette is a project of <a href = "http://www.wagglelabs.com/">Waggle Labs</a>, <a href = "http://www.hive-mind.com/">Hive Mind</a> and <a href = "http://www.pathable.com/">Pathable</a>. It's probably copyrighted and shit.</p> 											
+		</div>
+
+		<div id = "pumpkin"></div>
+	</div>
+	
+	<script type="text/javascript" charset="utf-8">
+		iMarionette.Client.initialize();
+	</script>
+</body>
